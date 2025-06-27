@@ -1,21 +1,24 @@
 
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import Particles from '@tsparticles/react';
 import { loadAll } from '@tsparticles/all';
-import type { Engine } from '@tsparticles/engine';
+import { tsParticles } from '@tsparticles/engine';
 import { useTheme } from '@/contexts/ThemeContext';
 
 export const ParticlesBackground = () => {
   const { theme } = useTheme();
   
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadAll(engine);
+  useEffect(() => {
+    const initParticles = async () => {
+      await loadAll(tsParticles);
+    };
+    
+    initParticles();
   }, []);
 
   return (
     <Particles
       id="tsparticles"
-      init={particlesInit}
       options={{
         background: {
           color: {
