@@ -1,0 +1,177 @@
+
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+
+const skills = [
+  { name: 'React', level: 90 },
+  { name: 'TypeScript', level: 85 },
+  { name: 'Node.js', level: 80 },
+  { name: 'Python', level: 75 },
+  { name: 'UI/UX Design', level: 85 },
+  { name: 'PostgreSQL', level: 70 },
+];
+
+const timeline = [
+  {
+    type: 'experience',
+    title: 'Senior Full Stack Developer',
+    company: 'Tech Company',
+    period: '2022 - Present',
+    description: 'Leading development of modern web applications using React, Node.js, and cloud technologies.',
+  },
+  {
+    type: 'experience',
+    title: 'Full Stack Developer',
+    company: 'StartUp Inc.',
+    period: '2020 - 2022',
+    description: 'Developed and maintained multiple client projects using various technologies.',
+  },
+  {
+    type: 'education',
+    title: 'Computer Science Degree',
+    company: 'University of Technology',
+    period: '2016 - 2020',
+    description: 'Bachelor of Science in Computer Science with focus on software engineering.',
+  },
+];
+
+const About = () => {
+  return (
+    <div className="min-h-screen pt-20 pb-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            About Me
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Passionate developer with 5+ years of experience creating digital solutions
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            <div className="relative">
+              <div className="w-80 h-80 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl">
+                <img
+                  src="/placeholder.svg"
+                  alt="Profile"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-600/20 rounded-full"></div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="flex flex-col justify-center"
+          >
+            <h2 className="text-3xl font-bold mb-6">Hello, I'm John</h2>
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              A passionate full-stack developer with a love for creating beautiful, 
+              functional, and user-friendly digital experiences. I specialize in 
+              modern web technologies and enjoy solving complex problems with elegant solutions.
+            </p>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              When I'm not coding, you can find me exploring new technologies, 
+              contributing to open-source projects, or enjoying a good cup of coffee 
+              while reading about the latest industry trends.
+            </p>
+            
+            <div className="grid grid-cols-2 gap-4">
+              <Card className="p-4 text-center">
+                <h3 className="text-2xl font-bold text-primary">50+</h3>
+                <p className="text-muted-foreground">Projects Completed</p>
+              </Card>
+              <Card className="p-4 text-center">
+                <h3 className="text-2xl font-bold text-primary">5+</h3>
+                <p className="text-muted-foreground">Years Experience</p>
+              </Card>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mb-16"
+        >
+          <h2 className="text-3xl font-bold text-center mb-12">Skills & Technologies</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+              >
+                <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
+                  <div className="flex justify-between items-center mb-3">
+                    <h3 className="font-semibold">{skill.name}</h3>
+                    <Badge variant="secondary">{skill.level}%</Badge>
+                  </div>
+                  <div className="w-full bg-secondary rounded-full h-2">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${skill.level}%` }}
+                      transition={{ delay: 1 + index * 0.1, duration: 1 }}
+                      className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full"
+                    />
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+        >
+          <h2 className="text-3xl font-bold text-center mb-12">Experience & Education</h2>
+          <div className="max-w-4xl mx-auto">
+            {timeline.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.2 + index * 0.2, duration: 0.8 }}
+                className="relative flex items-center mb-8"
+              >
+                <div className="flex-1">
+                  <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Badge variant={item.type === 'experience' ? 'default' : 'secondary'}>
+                        {item.type === 'experience' ? 'Work' : 'Education'}
+                      </Badge>
+                      <span className="text-sm text-muted-foreground">{item.period}</span>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                    <p className="text-primary font-medium mb-3">{item.company}</p>
+                    <p className="text-muted-foreground">{item.description}</p>
+                  </Card>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default About;
