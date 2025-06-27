@@ -71,7 +71,6 @@ export const ParticlesBackground = () => {
           number: {
             density: {
               enable: true,
-              area: 800,
             },
             value: 80,
           },
