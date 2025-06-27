@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { ReactTyped } from 'react-typed';
+import Typed from 'react-typed';
 
 interface TypedTextProps {
   strings: string[];
@@ -18,7 +18,7 @@ export const TypedText: React.FC<TypedTextProps> = ({
   className = '',
 }) => {
   return (
-    <ReactTyped
+    <Typed
       strings={strings}
       typeSpeed={typeSpeed}
       backSpeed={backSpeed}
