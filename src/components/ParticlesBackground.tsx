@@ -15,7 +15,7 @@ export const ParticlesBackground = () => {
   return (
     <Particles
       id="tsparticles"
-      particlesInit={particlesInit}
+      init={particlesInit}
       options={{
         background: {
           color: {
