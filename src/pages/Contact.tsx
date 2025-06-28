@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -31,15 +32,35 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const result = await emailjs.send(
+        "service_i5mz527", // 🔁 Replace with your actual service ID
+        "template_p99t2no", // 🔁 Replace with your actual template ID
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "TRbwRA_Cd8z8DlPNi" // 🔁 Replace with your actual public key
+      );
+
+      // console.log(result.text);
       toast({
         title: "Message sent!",
         description: "Thank you for your message. I'll get back to you soon.",
       });
+
       setFormData({ name: "", email: "", message: "" });
-    }, 2000);
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Message failed",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
