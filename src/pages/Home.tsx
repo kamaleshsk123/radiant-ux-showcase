@@ -10,9 +10,9 @@ const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   const handleDownloadCV = () => {
-    // In a real app, you'd have an actual PDF file
-    const pdfUrl = "/path-to-your-cv.pdf";
-    saveAs(pdfUrl, "CV.pdf");
+    const pdfUrl =
+      "https://drive.google.com/uc?export=download&id=11XJ2Pk1RobNBQldDgk7QdYOfX1hYn7qP";
+    saveAs(pdfUrl, "ShanmugaKamalesh.pdf");
   };
 
   return (

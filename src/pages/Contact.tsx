@@ -158,7 +158,7 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
+            <Card className="group bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-300 hover:backdrop-blur-md">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
                   <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-3 rounded-full">
@@ -166,7 +166,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Phone</h3>
-                    <p className="text-muted-foreground">+91-9360899516</p>
+                    <p className="text-muted-foreground blur-sm group-hover:blur-none transition-all duration-300">
+                      +91-9360899516
+                    </p>
                   </div>
                 </div>
               </CardContent>
