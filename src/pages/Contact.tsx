@@ -34,17 +34,16 @@ const Contact = () => {
 
     try {
       const result = await emailjs.send(
-        "service_i5mz527", // 🔁 Replace with your actual service ID
-        "template_p99t2no", // 🔁 Replace with your actual template ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           name: formData.name,
           email: formData.email,
           message: formData.message,
         },
-        "TRbwRA_Cd8z8DlPNi" // 🔁 Replace with your actual public key
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      // console.log(result.text);
       toast({
         title: "Message sent!",
         description: "Thank you for your message. I'll get back to you soon.",
