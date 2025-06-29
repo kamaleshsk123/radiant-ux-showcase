@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -31,15 +32,34 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
       toast({
         title: "Message sent!",
         description: "Thank you for your message. I'll get back to you soon.",
       });
+
       setFormData({ name: "", email: "", message: "" });
-    }, 2000);
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Message failed",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -115,7 +135,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+                    className="w-full font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
                     {isSubmitting ? (
                       <motion.div
                         animate={{ rotate: 360 }}
@@ -158,7 +178,7 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
+            <Card className="group bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-300 hover:backdrop-blur-md">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
                   <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-3 rounded-full">
@@ -166,7 +186,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Phone</h3>
-                    <p className="text-muted-foreground">+91-9360899516</p>
+                    <p className="text-muted-foreground blur-sm group-hover:blur-none transition-all duration-300">
+                      +91-9360899516
+                    </p>
                   </div>
                 </div>
               </CardContent>
