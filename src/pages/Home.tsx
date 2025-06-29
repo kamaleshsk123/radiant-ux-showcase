@@ -10,9 +10,9 @@ const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   const handleDownloadCV = () => {
-    // In a real app, you'd have an actual PDF file
-    const pdfUrl = "/path-to-your-cv.pdf";
-    saveAs(pdfUrl, "CV.pdf");
+    const pdfUrl =
+      "https://drive.google.com/uc?export=download&id=11XJ2Pk1RobNBQldDgk7QdYOfX1hYn7qP";
+    saveAs(pdfUrl, "ShanmugaKamalesh.pdf");
   };
 
   return (
@@ -25,6 +25,19 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto">
+          <motion.div
+            ref={heroRef}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mb-2 w-60 h-60 mx-auto rounded-full overflow-hidden ">
+            <img
+              src="/Home.png"
+              alt="Hero"
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
