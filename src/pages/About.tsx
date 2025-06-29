@@ -71,7 +71,7 @@ const About = () => {
                 <img
                   src="/About_Me.png"
                   alt="Profile"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  className="w-full h-auto object-cover hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-600/20 rounded-full"></div>

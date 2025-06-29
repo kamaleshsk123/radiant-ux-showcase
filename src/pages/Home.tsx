@@ -25,6 +25,19 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto">
+          <motion.div
+            ref={heroRef}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mb-2 w-60 h-60 mx-auto rounded-full overflow-hidden ">
+            <img
+              src="/Home.png"
+              alt="Hero"
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
