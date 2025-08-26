@@ -9,6 +9,7 @@ import {
   Settings,
 } from "lucide-react";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -56,6 +57,12 @@ const services = [
 ];
 
 const Services = () => {
+  const navigate = useNavigate();
+
+  const handleGetInTouch = () => {
+    navigate('/contact');
+  };
+
   return (
     <div className="min-h-screen pt-20 pb-16">
       <div className="absolute inset-0 opacity-20">
@@ -131,6 +138,7 @@ const Services = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={handleGetInTouch}
               className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
               Get In Touch
             </motion.button>

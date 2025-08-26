@@ -4,22 +4,22 @@ import { Badge } from "@/components/ui/badge";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 const skills = [
-  { name: "React", level: 90 },
-  { name: "TypeScript", level: 85 },
-  { name: "Node.js", level: 80 },
+  { name: "Angular", level: 90 },
+  { name: "React", level: 45 },
+  { name: "n8n", level: 60 },
   { name: "Python", level: 75 },
   { name: "UI/UX Design", level: 85 },
-  { name: "PostgreSQL", level: 70 },
+  { name: "Mongodb", level: 70 },
 ];
 
 const timeline = [
   {
     type: "experience",
-    title: "Senior Full Stack Developer",
-    company: "Tech Company",
-    period: "2022 - Present",
+    title: "UX Designer / Ui Developer",
+    company: "Hash8",
+    period: "2023 - Present",
     description:
-      "Leading development of modern web applications using React, Node.js, and cloud technologies.",
+      "Leading development of modern web applications using Figma, Angular, Node.js, and cloud technologies.",
   },
   {
     type: "experience",
@@ -31,11 +31,11 @@ const timeline = [
   },
   {
     type: "education",
-    title: "Computer Science Degree",
-    company: "University of Technology",
-    period: "2016 - 2020",
+    title: "Electronics and Communication Degree",
+    company: "University College of Engineering, Kanchipuram",
+    period: "2019 - 2023",
     description:
-      "Bachelor of Science in Computer Science with focus on software engineering.",
+      "Bachelor’s in Electronics and Communication Engineering with focus on communication systems, digital electronics, and embedded technologies.",
   },
 ];
 
@@ -51,12 +51,13 @@ const About = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16">
+          className="text-center mb-16"
+        >
           <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
             About Me
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Passionate developer with 5+ years of experience creating digital
+            Passionate developer with 2+ years of experience creating digital
             solutions
           </p>
         </motion.div>
@@ -65,7 +66,8 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}>
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
             <div className="relative">
               <div className="w-80 h-80 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl">
                 <img
@@ -82,7 +84,8 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="flex flex-col justify-center">
+            className="flex flex-col justify-center"
+          >
             <h2 className="text-3xl font-bold mb-6">Hello, I'm Kamalesh</h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               A passionate full-stack developer with a love for creating
@@ -98,11 +101,11 @@ const About = () => {
 
             <div className="grid grid-cols-2 gap-4">
               <Card className="p-4 text-center">
-                <h3 className="text-2xl font-bold text-primary">50+</h3>
+                <h3 className="text-2xl font-bold text-primary">12+</h3>
                 <p className="text-muted-foreground">Projects Completed</p>
               </Card>
               <Card className="p-4 text-center">
-                <h3 className="text-2xl font-bold text-primary">5+</h3>
+                <h3 className="text-2xl font-bold text-primary">2+</h3>
                 <p className="text-muted-foreground">Years Experience</p>
               </Card>
             </div>
@@ -113,7 +116,8 @@ const About = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mb-16">
+          className="mb-16"
+        >
           <h2 className="text-3xl font-bold text-center mb-12">
             Skills & Technologies
           </h2>
@@ -123,7 +127,8 @@ const About = () => {
                 key={skill.name}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}>
+                transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+              >
                 <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
                   <div className="flex justify-between items-center mb-3">
                     <h3 className="font-semibold">{skill.name}</h3>
@@ -146,7 +151,8 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}>
+          transition={{ delay: 1, duration: 0.8 }}
+        >
           <h2 className="text-3xl font-bold text-center mb-12">
             Experience & Education
           </h2>
@@ -157,14 +163,16 @@ const About = () => {
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.2 + index * 0.2, duration: 0.8 }}
-                className="relative flex items-center mb-8">
+                className="relative flex items-center mb-8"
+              >
                 <div className="flex-1">
                   <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
                     <div className="flex items-center gap-3 mb-2">
                       <Badge
                         variant={
                           item.type === "experience" ? "default" : "secondary"
-                        }>
+                        }
+                      >
                         {item.type === "experience" ? "Work" : "Education"}
                       </Badge>
                       <span className="text-sm text-muted-foreground">
