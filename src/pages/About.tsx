@@ -5,10 +5,10 @@ import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 const skills = [
   { name: "Angular", level: 90 },
-  { name: "React", level: 45 },
-  { name: "n8n", level: 60 },
+  { name: "Node.js", level: 65 },
+  { name: "n8n", level: 85 },
   { name: "Python", level: 75 },
-  { name: "UI/UX Design", level: 85 },
+  { name: "UI/UX", level: 92 },
   { name: "Mongodb", level: 70 },
 ];
 
@@ -23,11 +23,11 @@ const timeline = [
   },
   {
     type: "experience",
-    title: "Full Stack Developer",
-    company: "StartUp Inc.",
-    period: "2020 - 2022",
+    title: "Java Developer",
+    company: "QSpiders",
+    period: "2022 - 2023",
     description:
-      "Developed and maintained multiple client projects using various technologies.",
+      "Completed training in Java programming, covering core concepts, object-oriented programming, and real-time project practice.",
   },
   {
     type: "education",
@@ -157,37 +157,62 @@ const About = () => {
             Experience & Education
           </h2>
           <div className="max-w-4xl mx-auto">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.2 + index * 0.2, duration: 0.8 }}
-                className="relative flex items-center mb-8"
-              >
-                <div className="flex-1">
-                  <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Badge
-                        variant={
-                          item.type === "experience" ? "default" : "secondary"
-                        }
-                      >
-                        {item.type === "experience" ? "Work" : "Education"}
-                      </Badge>
-                      <span className="text-sm text-muted-foreground">
-                        {item.period}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-primary font-medium mb-3">
-                      {item.company}
-                    </p>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </Card>
-                </div>
-              </motion.div>
-            ))}
+            {timeline.map((item, index) => {
+              let badgeText = "";
+              let badgeVariant = "secondary";
+              switch (item.company) {
+                case "Hash8":
+                  badgeText = "Work";
+                  badgeVariant = "default";
+                  break;
+                case "QSpiders":
+                  badgeText = "Intern";
+                  badgeVariant = "default";
+                  break;
+                case "University College of Engineering, Kanchipuram":
+                  badgeText = "Education";
+                  badgeVariant = "secondary";
+                  break;
+                default:
+                  if (item.type === "experience") {
+                    badgeText = "Work";
+                    badgeVariant = "default";
+                  } else {
+                    badgeText = "Education";
+                    badgeVariant = "secondary";
+                  }
+              }
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.2 + index * 0.2, duration: 0.8 }}
+                  className="relative flex items-center mb-8"
+                >
+                  <div className="flex-1">
+                    <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Badge variant={badgeVariant}>{badgeText}</Badge>
+                        <span className="text-sm text-muted-foreground">
+                          {item.period}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-semibold mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-primary font-medium mb-3">
+                        {item.company}
+                      </p>
+                      <p className="text-muted-foreground">
+                        {item.description}
+                      </p>
+                    </Card>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>
