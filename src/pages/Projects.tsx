@@ -9,66 +9,80 @@ import { ParticlesBackground } from "@/components/ParticlesBackground";
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "LifeLine.AI",
     description:
-      "A full-stack e-commerce solution with React, Node.js, and PostgreSQL",
-    image: "/placeholder.svg",
-    technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+      "A full-stack emotional support companion using React, Node.js, and PostgreSQL",
+    image: "/projects/Lifeline.ai.png",
+    technologies: ["React", "Node.js", "Firebase", "Stripe", "OpenRouterAPI"],
+    liveUrl: "https://lifelineai.netlify.app/",
+    githubUrl: "https://github.com/kamaleshsk123/Lifeline-Ai.git",
     category: "Web Development",
   },
   {
     id: 2,
-    title: "Mobile Banking App",
+    title: "Offline Chatting Application",
     description: "React Native mobile application for digital banking services",
-    image: "/placeholder.svg",
+    image: "/projects/Hash8-Chatter.png",
     technologies: ["React Native", "Firebase", "Redux", "Expo"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Mobile Development",
+    liveUrl: "https://seclockofflinechat.netlify.app/login",
+    githubUrl: "https://github.com/kamaleshsk123/hash8-chatter.git",
+    category: "Web Development",
   },
   {
     id: 3,
-    title: "Portfolio Website",
+    title: "Discord Clone Website",
     description:
       "Modern portfolio website with 3D animations and particle effects",
-    image: "/placeholder.svg",
+    image: "/projects/Discord_clone.png",
     technologies: ["React", "Three.js", "Framer Motion", "Tailwind"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    liveUrl: "https://seclockteamchat.netlify.app/",
+    githubUrl: "https://github.com/kamaleshsk123/Discord-CloneApp.git",
     category: "Web Development",
   },
   {
     id: 4,
-    title: "Task Management SaaS",
+    title: "Proto - Spec Management Tool",
     description:
-      "Collaborative task management platform with real-time updates",
-    image: "/placeholder.svg",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
+      "This project appears to be a full-stack application for managing specification sheets",
+    image: "/projects/Protohash.png",
+    technologies: [
+      "Angular",
+      "Protobuf",
+      "Protobuf JS",
+      "Typescript",
+      "Tailwind CSS",
+      "PostgreSQL",
+    ],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/kamaleshsk123/spec-sheet-manager.git",
     category: "Web Development",
   },
   {
     id: 5,
     title: "Weather Dashboard",
     description: "Interactive weather dashboard with data visualization",
-    image: "/placeholder.svg",
-    technologies: ["Vue.js", "D3.js", "OpenWeather API", "Vuetify"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    image: "/projects/Weather_Dashboard.png",
+    technologies: [
+      "React.ts",
+      "Next.js",
+      "Recharts",
+      "OpenWeather API",
+      "Framer Motion",
+    ],
+    liveUrl: "https://seclockweatherreportdashboard.netlify.app/",
+    githubUrl: "https://github.com/kamaleshsk123/Weather-Dashboard.git",
     category: "Web Development",
   },
   {
     id: 6,
-    title: "Fitness Tracking App",
-    description: "Mobile app for tracking workouts and fitness goals",
-    image: "/placeholder.svg",
-    technologies: ["React Native", "Firebase", "HealthKit", "Charts"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Mobile Development",
+    title: "stratX CLI",
+    description:
+      "Command-line interface (CLI) for managing devices, along with a complementary web interface.",
+    image: "/projects/stratX.png",
+    technologies: ["Rust", "Node.js", "HTML", "Shell Script"],
+    liveUrl: "https://www.npmjs.com/package/stratx650?activeTab=code",
+    githubUrl: "https://github.com/kamaleshsk123/Command-Line-Interface.git",
+    category: "CLI",
   },
 ];
 
@@ -87,7 +101,8 @@ const Projects = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16">
+          className="text-center mb-16"
+        >
           <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
             My Projects
           </h1>
@@ -105,7 +120,8 @@ const Projects = () => {
               transition={{ delay: 0.1 * index, duration: 0.8 }}
               whileHover={{ y: -10 }}
               className="group cursor-pointer"
-              onClick={() => setSelectedProject(project)}>
+              onClick={() => setSelectedProject(project)}
+            >
               <Card className="h-full overflow-hidden hover:shadow-2xl transition-all duration-500 bg-card/50 backdrop-blur-sm border border-border/50">
                 <div className="relative overflow-hidden">
                   <img
@@ -155,13 +171,15 @@ const Projects = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-              onClick={() => setSelectedProject(null)}>
+              onClick={() => setSelectedProject(null)}
+            >
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 className="bg-card rounded-lg p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-                onClick={(e) => e.stopPropagation()}>
+                onClick={(e) => e.stopPropagation()}
+              >
                 <div className="flex justify-between items-start mb-6">
                   <div>
                     <h2 className="text-3xl font-bold mb-2">
@@ -172,7 +190,8 @@ const Projects = () => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={() => setSelectedProject(null)}>
+                    onClick={() => setSelectedProject(null)}
+                  >
                     <X className="h-4 w-4" />
                   </Button>
                 </div>
@@ -203,11 +222,26 @@ const Projects = () => {
                     </div>
 
                     <div className="flex gap-4">
-                      <Button asChild className="flex-1">
+                      <Button
+                        asChild
+                        className={`flex-1 ${
+                          selectedProject.id === 4
+                            ? "bg-gray-400 hover:bg-gray-400"
+                            : ""
+                        }`}
+                        disabled={selectedProject.id === 4}
+                      >
                         <a
-                          href={selectedProject.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer">
+                          href={
+                            selectedProject.id === 4
+                              ? undefined
+                              : selectedProject.liveUrl
+                          }
+                          target={
+                            selectedProject.id === 4 ? undefined : "_blank"
+                          }
+                          rel="noopener noreferrer"
+                        >
                           <ExternalLink className="mr-2 h-4 w-4" />
                           Live Demo
                         </a>
@@ -216,7 +250,8 @@ const Projects = () => {
                         <a
                           href={selectedProject.githubUrl}
                           target="_blank"
-                          rel="noopener noreferrer">
+                          rel="noopener noreferrer"
+                        >
                           <Github className="mr-2 h-4 w-4" />
                           Source Code
                         </a>
