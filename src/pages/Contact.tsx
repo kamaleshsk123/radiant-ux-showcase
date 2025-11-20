@@ -5,15 +5,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 import emailjs from "emailjs-com";
+import { saveAs } from "file-saver";
+import { Separator } from "@/components/ui/separator";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,6 +31,12 @@ const Contact = () => {
     });
   };
 
+  const handleDownloadCV = () => {
+    const pdfUrl =
+      "https://drive.google.com/uc?export=download&id=11XJ2Pk1RobNBQldDgk7QdYOfX1hYn7qP";
+    saveAs(pdfUrl, "ShanmugaKamalesh.pdf");
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -39,6 +48,7 @@ const Contact = () => {
         {
           name: formData.name,
           email: formData.email,
+          subject: formData.subject,
           message: formData.message,
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
@@ -49,7 +59,7 @@ const Contact = () => {
         description: "Thank you for your message. I'll get back to you soon.",
       });
 
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       console.error(error);
       toast({
@@ -73,7 +83,8 @@ const Contact = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16">
+          className="text-center mb-16"
+        >
           <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
             Get In Touch
           </h1>
@@ -87,7 +98,8 @@ const Contact = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}>
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
             <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
               <CardHeader>
                 <CardTitle className="text-2xl">Send me a message</CardTitle>
@@ -120,6 +132,18 @@ const Contact = () => {
                   </div>
 
                   <div className="space-y-2">
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      required
+                      className="bg-background/50"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
@@ -135,7 +159,8 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+                    className="w-full font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                  >
                     {isSubmitting ? (
                       <motion.div
                         animate={{ rotate: 360 }}
@@ -144,7 +169,8 @@ const Contact = () => {
                           repeat: Infinity,
                           ease: "linear",
                         }}
-                        className="mr-2">
+                        className="mr-2"
+                      >
                         <Send className="h-4 w-4" />
                       </motion.div>
                     ) : (
@@ -161,7 +187,8 @@ const Contact = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="space-y-6">
+            className="space-y-6"
+          >
             <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
@@ -177,7 +204,6 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
-
             <Card className="group bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-300 hover:backdrop-blur-md">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
@@ -193,7 +219,6 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
-
             <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
@@ -210,34 +235,33 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border-primary/20">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-xl font-semibold mb-4">Let's Connect</h3>
-                <p className="text-muted-foreground mb-6">
-                  Follow me on social media for updates and behind-the-scenes
-                  content
+            <Separator className="my-2 bg-border" />
+            <Card className=" p-6 flex flex-col items-center justify-center text-center">
+              <div className="flex items-center gap-x-2 text-lg font-semibold text-green-500 mb-4">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <p className="text-green-500">
+                  Available for new opportunities
                 </p>
-                <div className="flex justify-center space-x-4">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="rounded-full">
-                    <Mail className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="rounded-full">
-                    <Phone className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="rounded-full">
-                    <MapPin className="h-4 w-4" />
-                  </Button>
-                </div>
-              </CardContent>
+              </div>
+              {/* <h3 className=" font-bold mb-2">
+                Let's build something great together.
+              </h3> */}
+              <p className="text-muted-foreground mb-6 max-w-sm">
+                I love crafting clean, functional, and user-friendly web
+                experiences. If you have a project in mind, I’d be happy to
+                connect and discuss it with you.
+              </p>
+              <Button
+                onClick={handleDownloadCV}
+                size="lg"
+                className="w-full font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Download Resume
+              </Button>
             </Card>
           </motion.div>
         </div>
