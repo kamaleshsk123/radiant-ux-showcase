@@ -6,13 +6,19 @@ import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { TypedText } from "@/components/TypedText";
 import { saveAs } from "file-saver";
 import { Link } from "react-router-dom";
+import { track } from "@/lib/mixpanel";
 
 const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    track("Home Page Visited");
+  }, []);
+
   const handleDownloadCV = () => {
+    track("Download CV Button Clicked");
     const pdfUrl =
-      "https://drive.google.com/uc?export=download&id=11XJ2Pk1RobNBQldDgk7QdYOfX1hYn7qP";
+      "https://drive.google.com/uc?export=download&id=119PfjBlUqMjfzVJ_-K1LfA-GSAOQwxnY";
     saveAs(pdfUrl, "ShanmugaKamalesh.pdf");
   };
 
@@ -110,13 +116,13 @@ const Home = () => {
                   <Github className="h-5 w-5" />
                 </Button>
               </a>
-              <Button
+              {/* <Button
                 variant="outline"
                 size="icon"
                 className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Linkedin className="h-5 w-5" />
-              </Button>
+              </Button> */}
               <Link to="/contact">
                 <Button
                   variant="outline"
