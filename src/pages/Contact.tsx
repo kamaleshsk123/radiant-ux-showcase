@@ -33,7 +33,7 @@ const Contact = () => {
 
   const handleDownloadCV = () => {
     const pdfUrl =
-      "https://drive.google.com/uc?export=download&id=11XJ2Pk1RobNBQldDgk7QdYOfX1hYn7qP";
+      "https://drive.google.com/file/d/119PfjBlUqMjfzVJ_-K1LfA-GSAOQwxnY/view?usp=sharing";
     saveAs(pdfUrl, "ShanmugaKamalesh.pdf");
   };
 
