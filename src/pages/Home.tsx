@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,17 +6,11 @@ import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { TypedText } from "@/components/TypedText";
 import { saveAs } from "file-saver";
 import { Link } from "react-router-dom";
-import { track } from "@/lib/mixpanel";
 
 const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    track("Home Page Visited");
-  }, []);
-
   const handleDownloadCV = () => {
-    track("Download CV Button Clicked");
     const pdfUrl =
       "https://drive.google.com/uc?export=download&id=119PfjBlUqMjfzVJ_-K1LfA-GSAOQwxnY";
     saveAs(pdfUrl, "ShanmugaKamalesh.pdf");
