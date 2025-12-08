@@ -57,7 +57,7 @@ const About = () => {
             About Me
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Passionate developer with 2+ years of experience creating digital
+            Passionate developer with 1+ years of experience creating digital
             solutions
           </p>
         </motion.div>
@@ -105,7 +105,7 @@ const About = () => {
                 <p className="text-muted-foreground">Projects Completed</p>
               </Card>
               <Card className="p-4 text-center">
-                <h3 className="text-2xl font-bold text-primary">2+</h3>
+                <h3 className="text-2xl font-bold text-primary">1+</h3>
                 <p className="text-muted-foreground">Years Experience</p>
               </Card>
             </div>
