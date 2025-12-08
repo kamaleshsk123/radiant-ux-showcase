@@ -6,11 +6,17 @@ import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { TypedText } from "@/components/TypedText";
 import { saveAs } from "file-saver";
 import { Link } from "react-router-dom";
+import { track } from "@/lib/mixpanel";
 
 const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    track("Home Page Visited");
+  }, []);
+
   const handleDownloadCV = () => {
+    track("Download CV Button Clicked");
     const pdfUrl =
       "https://drive.google.com/file/d/119PfjBlUqMjfzVJ_-K1LfA-GSAOQwxnY/view?usp=sharing";
     saveAs(pdfUrl, "ShanmugaKamalesh.pdf");
