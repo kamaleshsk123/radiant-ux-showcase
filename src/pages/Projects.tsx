@@ -11,9 +11,16 @@ const projects = [
     id: 1,
     title: "LifeLine.AI",
     description:
-      "A full-stack emotional support companion using React, Node.js, and PostgreSQL",
+      "A full-stack emotional support companion using React, Firebase and AI chat via OpenRouter",
     image: "/projects/Lifeline.ai.png",
-    technologies: ["React", "Node.js", "Firebase", "Stripe", "OpenRouterAPI"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Firebase",
+      "Cloud Functions",
+      "OpenRouter API",
+      "Gemini API",
+    ],
     liveUrl: "https://lifelineai.netlify.app/",
     githubUrl: "https://github.com/kamaleshsk123/Lifeline-Ai.git",
     category: "Web Development",
@@ -21,20 +28,30 @@ const projects = [
   {
     id: 2,
     title: "Offline Chatting Application",
-    description: "React Native mobile application for digital banking services",
+    description:
+      "A React + Firebase chat app (PWA) that keeps working offline — messages are cached locally, queued while disconnected and auto-synced on reconnect.",
     image: "/projects/Hash8-Chatter.png",
-    technologies: ["React Native", "Firebase", "Redux", "Expo"],
+    technologies: ["React", "TypeScript", "Firebase", "Vite", "PWA"],
     liveUrl: "https://seclockofflinechat.netlify.app/login",
     githubUrl: "https://github.com/kamaleshsk123/hash8-chatter.git",
-    category: "Web Development",
+    category: "Web App",
   },
   {
     id: 3,
     title: "Discord Clone Website",
     description:
-      "Modern portfolio website with 3D animations and particle effects",
+      "A Discord-style chat platform with servers, channels and real-time messaging.",
     image: "/projects/Discord_clone.png",
-    technologies: ["React", "Three.js", "Framer Motion", "Tailwind"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Prisma",
+      "Socket.io",
+      "Clerk",
+      "LiveKit",
+      "Tailwind CSS",
+    ],
     liveUrl: "https://seclockteamchat.netlify.app/",
     githubUrl: "https://github.com/kamaleshsk123/Discord-CloneApp.git",
     category: "Web Development",
@@ -43,7 +60,7 @@ const projects = [
     id: 4,
     title: "Proto - Spec Management Tool",
     description:
-      "This project appears to be a full-stack application for managing specification sheets",
+      "An Angular tool for creating and managing Protobuf specification sheets, with a full-stack backend.",
     image: "/projects/Protohash.png",
     technologies: [
       "Angular",
@@ -63,9 +80,11 @@ const projects = [
     description: "Interactive weather dashboard with data visualization",
     image: "/projects/Weather_Dashboard.png",
     technologies: [
-      "React.ts",
       "Next.js",
+      "React",
+      "TypeScript",
       "Recharts",
+      "Leaflet",
       "OpenWeather API",
       "Framer Motion",
     ],
@@ -82,7 +101,7 @@ const projects = [
     technologies: ["Rust", "Node.js", "HTML", "Shell Script"],
     liveUrl: "https://www.npmjs.com/package/stratx650?activeTab=code",
     githubUrl: "https://github.com/kamaleshsk123/Command-Line-Interface.git",
-    category: "CLI",
+    category: "CLI Tool",
   },
 ];
 
