@@ -7,11 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Navigation } from "@/components/Navigation";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
+import SinglePage from "./pages/SinglePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,13 +21,14 @@ const App = () => (
         <BrowserRouter>
           <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
             <Navigation />
-            <main>
+            <main className="overflow-x-clip">
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />
+                {/* One scrolling page; old routes scroll to their section. */}
+                {["/", "/about", "/services", "/projects", "/contact"].map(
+                  (path) => (
+                    <Route key={path} path={path} element={<SinglePage />} />
+                  )
+                )}
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

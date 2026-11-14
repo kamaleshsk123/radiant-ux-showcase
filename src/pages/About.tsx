@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 const skillGroups = [
   {
@@ -58,15 +57,12 @@ const timeline = [
 
 const About = () => {
   return (
-    <div className="min-h-screen pt-20 pb-16">
-      <div className="absolute inset-0 opacity-20">
-        <ParticlesBackground />
-      </div>
-      {/* <ParticlesBackground /> */}
+    <section id="about" className="relative py-16 scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -81,11 +77,12 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "0px 0px -80px 0px" }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <div className="relative">
-              <div className="w-80 h-80 mx-auto lg:mx-0 rounded-full overflow-hidden shadow-2xl">
+            <div className="relative w-80 h-80 mx-auto lg:mx-0">
+              <div className="w-80 h-80 rounded-full overflow-hidden shadow-2xl">
                 <img
                   src="/About_Me.png"
                   alt="Profile"
@@ -98,7 +95,8 @@ const About = () => {
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "0px 0px -80px 0px" }}
             transition={{ delay: 0.4, duration: 0.8 }}
             className="flex flex-col justify-center"
           >
@@ -131,8 +129,9 @@ const About = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+          transition={{ duration: 0.8 }}
           className="mb-16"
         >
           <h2 className="text-3xl font-bold text-center mb-12">
@@ -143,8 +142,9 @@ const About = () => {
               <motion.div
                 key={group.name}
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+                transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
               >
                 <Card className="p-6 h-full hover:shadow-lg transition-shadow duration-300">
                   <h3 className="font-semibold mb-4">{group.name}</h3>
@@ -163,8 +163,9 @@ const About = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+          transition={{ duration: 0.8 }}
         >
           <h2 className="text-3xl font-bold text-center mb-12">
             Experience & Education
@@ -200,8 +201,9 @@ const About = () => {
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.2 + index * 0.2, duration: 0.8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+                  transition={{ delay: 0.1, duration: 0.8 }}
                   className="relative flex items-center mb-8"
                 >
                   <div className="flex-1">
@@ -229,7 +231,7 @@ const About = () => {
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
