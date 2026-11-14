@@ -3,19 +3,36 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 
-const skills = [
-  { name: "Angular", level: 90 },
-  { name: "Node.js", level: 65 },
-  { name: "n8n", level: 85 },
-  { name: "Python", level: 75 },
-  { name: "UI/UX", level: 92 },
-  { name: "Mongodb", level: 70 },
+const skillGroups = [
+  {
+    name: "Design",
+    skills: [
+      "Figma",
+      "User flows",
+      "Wireframing & prototyping",
+      "Design systems",
+    ],
+  },
+  {
+    name: "Development",
+    skills: [
+      "Angular",
+      "TypeScript",
+      "HTML & CSS",
+      "Tailwind CSS",
+      "Angular Material",
+    ],
+  },
+  {
+    name: "Also",
+    skills: ["Node.js", "MongoDB", "Python", "n8n"],
+  },
 ];
 
 const timeline = [
   {
     type: "experience",
-    title: "UX Designer / Ui Developer",
+    title: "UX Designer / UI Developer",
     company: "Hash8",
     period: "2023 - Present",
     description:
@@ -57,8 +74,7 @@ const About = () => {
             About Me
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Passionate developer with 3 years of experience creating digital
-            solutions
+            3 years designing and building web apps
           </p>
         </motion.div>
 
@@ -88,15 +104,16 @@ const About = () => {
           >
             <h2 className="text-3xl font-bold mb-6">Hello, I'm Kamalesh</h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              A passionate full-stack developer with a love for creating
-              beautiful, functional, and user-friendly digital experiences. I
-              specialize in modern web technologies and enjoy solving complex
-              problems with elegant solutions.
+              I'm a UX/UI designer who also writes the code. For the last 3
+              years at Hash8, I've designed interfaces in Figma and
+              built them in Angular, so I understand both what users need and
+              what developers can ship.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              When I'm not coding, you can find me exploring new technologies,
-              contributing to open-source projects, or enjoying a good cup of
-              coffee while reading about the latest industry trends.
+              I focus on dashboards, SaaS products and apps where clarity
+              matters. When you work with me, one person takes your product
+              from first sketch to final build: no handoff gaps, no lost
+              details.
             </p>
 
             <div className="grid grid-cols-2 gap-4">
@@ -122,25 +139,21 @@ const About = () => {
             Skills & Technologies
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skills.map((skill, index) => (
+            {skillGroups.map((group, index) => (
               <motion.div
-                key={skill.name}
+                key={group.name}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
               >
-                <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
-                  <div className="flex justify-between items-center mb-3">
-                    <h3 className="font-semibold">{skill.name}</h3>
-                    <Badge variant="secondary">{skill.level}%</Badge>
-                  </div>
-                  <div className="w-full bg-secondary rounded-full h-2">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${skill.level}%` }}
-                      transition={{ delay: 1 + index * 0.1, duration: 1 }}
-                      className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full"
-                    />
+                <Card className="p-6 h-full hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="font-semibold mb-4">{group.name}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
+                      <Badge key={skill} variant="secondary">
+                        {skill}
+                      </Badge>
+                    ))}
                   </div>
                 </Card>
               </motion.div>

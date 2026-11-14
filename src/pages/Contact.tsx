@@ -5,7 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Send, Download } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Download,
+  Linkedin,
+  Github,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 import emailjs from "emailjs-com";
@@ -90,8 +98,7 @@ const Contact = () => {
             Get In Touch
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Have a project in mind? Let's collaborate and create something
-            amazing together.
+            Let's work together, on a role or a project.
           </p>
         </motion.div>
 
@@ -235,6 +242,47 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
+            <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
+              <CardContent className="p-6">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-gradient-to-r from-sky-500 to-indigo-600 p-3 rounded-full">
+                    <Linkedin className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Social</h3>
+                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-muted-foreground">
+                      <a
+                        href="https://www.linkedin.com/in/shanmuga-kamalesh-m-1265b92b4"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-primary transition-colors duration-300"
+                      >
+                        <Linkedin className="h-4 w-4" />
+                        LinkedIn
+                      </a>
+                      <a
+                        href="https://github.com/kamaleshsk123"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-primary transition-colors duration-300"
+                      >
+                        <Github className="h-4 w-4" />
+                        GitHub
+                      </a>
+                      <a
+                        href="https://www.behance.net/shanmugkamales"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-primary transition-colors duration-300"
+                      >
+                        <span className="text-xs font-bold leading-none">Bē</span>
+                        Behance
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
             <Separator className="my-2 bg-border" />
             <Card className=" p-6 flex flex-col items-center justify-center text-center">
@@ -244,16 +292,15 @@ const Contact = () => {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
                 <p className="text-green-500">
-                  Available for new opportunities
+                  Open to full-time roles and freelance projects
                 </p>
               </div>
               {/* <h3 className=" font-bold mb-2">
                 Let's build something great together.
               </h3> */}
               <p className="text-muted-foreground mb-6 max-w-sm">
-                I love crafting clean, functional, and user-friendly web
-                experiences. If you have a project in mind, I’d be happy to
-                connect and discuss it with you.
+                Hiring for a UX/UI or Angular role, or have a web app to design
+                or build? Send me a message and I'll reply within 24 hours.
               </p>
               <Button
                 onClick={handleDownloadCV}
