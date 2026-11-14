@@ -15,7 +15,6 @@ import {
   Github,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { ParticlesBackground } from "@/components/ParticlesBackground";
 import emailjs from "emailjs-com";
 import { saveAs } from "file-saver";
 import { Separator } from "@/components/ui/separator";
@@ -82,15 +81,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 pb-16 relative">
-      <div className="absolute inset-0 opacity-20">
-        <ParticlesBackground />
-      </div>
-
+    <section id="contact" className="relative py-16 scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -105,8 +101,10 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "0px 0px -80px 0px" }}
             transition={{ delay: 0.2, duration: 0.8 }}
+            className="min-w-0"
           >
             <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
               <CardHeader>
@@ -193,9 +191,10 @@ const Contact = () => {
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "0px 0px -80px 0px" }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-6 min-w-0"
           >
             <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
               <CardContent className="p-6">
@@ -205,7 +204,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground break-all">
                       shanmugakamalesh123@gmail.com
                     </p>
                   </div>
@@ -314,7 +313,7 @@ const Contact = () => {
           </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { TypedText } from "@/components/TypedText";
 import { saveAs } from "file-saver";
 import { Link } from "react-router-dom";
@@ -17,8 +16,10 @@ const Home = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <ParticlesBackground />
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 scroll-mt-16"
+    >
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -157,7 +158,7 @@ const Home = () => {
           </motion.div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
