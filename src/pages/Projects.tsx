@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, X } from "lucide-react";
-import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 const caseStudies = [
   {
@@ -132,14 +131,12 @@ const Projects = () => {
   >(null);
 
   return (
-    <div className="min-h-screen pt-20 pb-16">
-      <div className="absolute inset-0 opacity-20">
-        <ParticlesBackground />
-      </div>
+    <section id="projects" className="relative py-16 scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -153,7 +150,8 @@ const Projects = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
           transition={{ delay: 0.2, duration: 0.8 }}
           className="mb-20"
         >
@@ -168,8 +166,9 @@ const Projects = () => {
                 target="_blank"
                 rel="noreferrer"
                 initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + 0.1 * index, duration: 0.8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+                transition={{ delay: 0.1 * index, duration: 0.8 }}
                 whileHover={{ y: -10 }}
                 className="group block"
               >
@@ -227,8 +226,9 @@ const Projects = () => {
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+              transition={{ delay: 0.1 * (index % 3), duration: 0.8 }}
               whileHover={{ y: -10 }}
               className="group cursor-pointer"
               onClick={() => setSelectedProject(project)}
@@ -375,7 +375,7 @@ const Projects = () => {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </section>
   );
 };
 

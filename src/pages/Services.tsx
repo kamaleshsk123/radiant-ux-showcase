@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code, Palette, RefreshCw } from "lucide-react";
-import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { useNavigate } from "react-router-dom";
 
 const services = [
@@ -57,14 +56,12 @@ const Services = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 pb-16">
-      <div className="absolute inset-0 opacity-20">
-        <ParticlesBackground />
-      </div>
+    <section id="services" className="relative py-16 scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -81,7 +78,8 @@ const Services = () => {
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "0px 0px -80px 0px" }}
               transition={{ delay: 0.1 * index, duration: 0.8 }}
               whileHover={{
                 scale: 1.05,
@@ -96,7 +94,7 @@ const Services = () => {
 
                 <CardHeader className="text-center relative z-10">
                   <div
-                    className={`inline-flex p-4 rounded-full bg-gradient-to-br ${service.gradient} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    className={`inline-flex self-center p-4 rounded-full bg-gradient-to-br ${service.gradient} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <service.icon className="w-8 h-8 text-white" />
                   </div>
                   <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors duration-300">
@@ -118,8 +116,9 @@ const Services = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+          transition={{ duration: 0.8 }}
           className="mt-16">
           <h2 className="text-3xl font-bold text-center mb-12">How I Work</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -127,8 +126,9 @@ const Services = () => {
               <motion.div
                 key={step.title}
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}>
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+                transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}>
                 <Card className="h-full p-6 text-center bg-card/50 backdrop-blur-sm border border-border/50 hover:shadow-lg transition-shadow duration-300">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-lg mb-4">
                     {index + 1}
@@ -145,8 +145,9 @@ const Services = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+          transition={{ duration: 0.8 }}
           className="text-center mt-16">
           <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-blue-500/10 to-purple-600/10 border-primary/20">
             <h2 className="text-3xl font-bold mb-4">
@@ -166,7 +167,7 @@ const Services = () => {
           </Card>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
