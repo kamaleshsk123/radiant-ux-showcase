@@ -6,6 +6,26 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, X } from "lucide-react";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 
+const caseStudies = [
+  {
+    title: "Kin: Family Medicine Care App",
+    description:
+      "A concept app that helps families know their parent took her medicines, and act fast when she hasn't. 8 interviews, 26 screens, 5 usability tests.",
+    image: "/case-studies/kin-cover.jpg",
+    tags: ["UX Research", "UI Design", "Accessibility", "Figma"],
+    behanceUrl:
+      "https://www.behance.net/gallery/256944789/Kin-Family-Medicine-Care-App-UXUI-Case-Study",
+  },
+  {
+    title: "Ledgerly: Credit Tracker for Shops",
+    description:
+      "A desktop web app that replaces the udhaar (credit) notebook for Indian shops that have a counter PC. Tested with 3 shops in Chennai.",
+    image: "/case-studies/ledgerly-cover.png",
+    tags: ["Dashboard", "Usability Testing", "Fintech", "UI Design"],
+    behanceUrl: "https://www.behance.net/gallery/258466709/Ledgerly",
+  },
+];
+
 const projects = [
   {
     id: 4,
@@ -130,6 +150,77 @@ const Projects = () => {
             Selected work in design and frontend development
           </p>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="mb-20"
+        >
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Design Case Studies
+          </h2>
+          <div className="grid lg:grid-cols-2 gap-8">
+            {caseStudies.map((study, index) => (
+              <motion.a
+                key={study.title}
+                href={study.behanceUrl}
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + 0.1 * index, duration: 0.8 }}
+                whileHover={{ y: -10 }}
+                className="group block"
+              >
+                <Card className="h-full overflow-hidden hover:shadow-2xl transition-all duration-500 bg-card/50 backdrop-blur-sm border border-border/50">
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={study.image}
+                      alt={study.title}
+                      className="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+
+                  <CardHeader className="pb-3">
+                    <Badge className="w-fit mb-3">UX/UI Case Study</Badge>
+                    <h3 className="text-2xl font-semibold group-hover:text-primary transition-colors duration-300">
+                      {study.title}
+                    </h3>
+                  </CardHeader>
+
+                  <CardContent>
+                    {study.description && (
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        {study.description}
+                      </p>
+                    )}
+
+                    {study.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {study.tags.map((tag) => (
+                          <Badge key={tag} variant="secondary" className="text-xs">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    )}
+
+                    <span className="inline-flex items-center bg-gradient-to-r from-blue-500 to-purple-600 group-hover:from-blue-600 group-hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold shadow-lg group-hover:shadow-xl transition-all duration-300">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View case study on Behance
+                    </span>
+                  </CardContent>
+                </Card>
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Development Projects
+        </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
