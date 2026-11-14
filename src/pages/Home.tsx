@@ -59,12 +59,7 @@ const Home = () => {
             className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-8"
           >
             <TypedText
-              strings={[
-                "Frontend Developer",
-                "UI/UX Designer",
-                "Problem Solver",
-                "Creative Thinker",
-              ]}
+              strings={["UX/UI Designer", "Angular Developer"]}
               typeSpeed={80}
               backSpeed={40}
               loop
@@ -77,8 +72,9 @@ const Home = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto"
           >
-            Passionate about creating beautiful, functional, and user-friendly
-            digital experiences. Let's build something amazing together.
+            I design and build clean, easy-to-use web apps, from Figma to
+            production-ready Angular. Dashboards, SaaS products and web apps
+            for startups and growing teams.
           </motion.p>
 
           <motion.div
@@ -87,14 +83,23 @@ const Home = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12"
           >
-            <Button
-              onClick={handleDownloadCV}
-              size="lg"
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <Download className="mr-2 h-5 w-5" />
-              Download CV
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <Link to="/projects">View my work</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                <Link to="/contact">Let's talk</Link>
+              </Button>
+            </div>
 
             <div className="flex items-center space-x-4">
               <a
@@ -126,6 +131,14 @@ const Home = () => {
                   <Mail className="h-5 w-5" />
                 </Button>
               </Link>
+              <button
+                type="button"
+                onClick={handleDownloadCV}
+                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary underline-offset-4 hover:underline transition-colors duration-300"
+              >
+                <Download className="mr-1 h-4 w-4" />
+                Download CV
+              </button>
             </div>
           </motion.div>
         </motion.div>

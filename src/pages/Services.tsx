@@ -1,58 +1,51 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Code,
-  Palette,
-  Smartphone,
-  Globe,
-  Database,
-  Settings,
-} from "lucide-react";
+import { Code, Palette, RefreshCw } from "lucide-react";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { useNavigate } from "react-router-dom";
 
 const services = [
   {
-    icon: Code,
-    title: "Web Development",
-    description:
-      "Custom web applications built with modern technologies like React, Node.js, and TypeScript.",
-    gradient: "from-blue-500 to-cyan-500",
-  },
-  {
     icon: Palette,
-    title: "UI/UX Design",
+    title: "UX/UI Design",
     description:
-      "Beautiful, intuitive user interfaces designed with user experience at the forefront.",
+      "User flows, wireframes and polished Figma designs for web and mobile apps, with a reusable design system.",
     gradient: "from-purple-500 to-pink-500",
   },
   {
-    icon: Smartphone,
-    title: "Mobile Development",
+    icon: Code,
+    title: "Figma to Angular",
     description:
-      "Responsive mobile applications that work seamlessly across all devices and platforms.",
-    gradient: "from-green-500 to-emerald-500",
+      "Responsive, pixel-accurate Angular frontends built from your designs (or mine), with clean, maintainable components.",
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
-    icon: Globe,
-    title: "API Development",
+    icon: RefreshCw,
+    title: "App Redesign",
     description:
-      "Robust RESTful APIs and GraphQL endpoints for seamless data integration.",
+      "Modernise an outdated or confusing app with a UX review, redesign and rebuild, so users find what they need faster.",
     gradient: "from-orange-500 to-red-500",
   },
+];
+
+const steps = [
   {
-    icon: Database,
-    title: "Database Design",
-    description:
-      "Efficient database architecture and optimization for scalable applications.",
-    gradient: "from-indigo-500 to-purple-500",
+    title: "Discover",
+    description: "We talk through your goals, users and timeline.",
   },
   {
-    icon: Settings,
-    title: "DevOps & Deployment",
+    title: "Design",
     description:
-      "Cloud deployment, CI/CD pipelines, and infrastructure management.",
-    gradient: "from-teal-500 to-blue-500",
+      "I create flows and Figma designs you can review and comment on.",
+  },
+  {
+    title: "Build",
+    description: "I turn the approved designs into a clean Angular app.",
+  },
+  {
+    title: "Launch",
+    description:
+      "We test, deploy and polish, and I stay around for fixes.",
   },
 ];
 
@@ -78,7 +71,8 @@ const Services = () => {
             My Services
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive digital solutions tailored to your needs
+            Design and development for web apps that need to be clear and easy
+            to use
           </p>
         </motion.div>
 
@@ -125,6 +119,33 @@ const Services = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="mt-16">
+          <h2 className="text-3xl font-bold text-center mb-12">How I Work</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}>
+                <Card className="h-full p-6 text-center bg-card/50 backdrop-blur-sm border border-border/50 hover:shadow-lg transition-shadow duration-300">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-lg mb-4">
+                    {index + 1}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </p>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-center mt-16">
           <Card className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-blue-500/10 to-purple-600/10 border-primary/20">
@@ -132,8 +153,8 @@ const Services = () => {
               Ready to Start Your Project?
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Let's discuss how I can help bring your ideas to life with
-              cutting-edge technology and creative solutions.
+              Tell me about your product, and I'll suggest the simplest way to
+              design and build it.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
