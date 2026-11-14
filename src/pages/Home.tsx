@@ -92,12 +92,13 @@ const Home = () => {
                 <Link to="/projects">View my work</Link>
               </Button>
               <Button
-                asChild
+                onClick={handleDownloadCV}
                 variant="outline"
                 size="lg"
                 className="px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
-                <Link to="/contact">Let's talk</Link>
+                <Download className="mr-2 h-5 w-5" />
+                Download CV
               </Button>
             </div>
 
@@ -115,13 +116,34 @@ const Home = () => {
                   <Github className="h-5 w-5" />
                 </Button>
               </a>
-              {/* <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              <a
+                href="https://www.linkedin.com/in/shanmuga-kamalesh-m-1265b92b4"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
               >
-                <Linkedin className="h-5 w-5" />
-              </Button> */}
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </Button>
+              </a>
+              <a
+                href="https://www.behance.net/shanmugkamales"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Behance"
+              >
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                >
+                  <span className="text-sm font-bold leading-none">Bē</span>
+                </Button>
+              </a>
               <Link to="/contact">
                 <Button
                   variant="outline"
@@ -131,14 +153,6 @@ const Home = () => {
                   <Mail className="h-5 w-5" />
                 </Button>
               </Link>
-              <button
-                type="button"
-                onClick={handleDownloadCV}
-                className="inline-flex items-center text-sm text-muted-foreground hover:text-primary underline-offset-4 hover:underline transition-colors duration-300"
-              >
-                <Download className="mr-1 h-4 w-4" />
-                Download CV
-              </button>
             </div>
           </motion.div>
         </motion.div>
