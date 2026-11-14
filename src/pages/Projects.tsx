@@ -8,6 +8,24 @@ import { ParticlesBackground } from "@/components/ParticlesBackground";
 
 const projects = [
   {
+    id: 4,
+    title: "Proto - Spec Management Tool",
+    description:
+      "An Angular tool for creating and managing Protobuf specification sheets, with a full-stack backend.",
+    image: "/projects/Protohash.png",
+    technologies: [
+      "Angular",
+      "Protobuf",
+      "Protobuf JS",
+      "Typescript",
+      "Tailwind CSS",
+      "PostgreSQL",
+    ],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/kamaleshsk123/spec-sheet-manager.git",
+    category: "Web App",
+  },
+  {
     id: 1,
     title: "LifeLine.AI",
     description:
@@ -23,7 +41,7 @@ const projects = [
     ],
     liveUrl: "https://lifelineai.netlify.app/",
     githubUrl: "https://github.com/kamaleshsk123/Lifeline-Ai.git",
-    category: "Web Development",
+    category: "Web App",
   },
   {
     id: 2,
@@ -34,6 +52,25 @@ const projects = [
     technologies: ["React", "TypeScript", "Firebase", "Vite", "PWA"],
     liveUrl: "https://seclockofflinechat.netlify.app/login",
     githubUrl: "https://github.com/kamaleshsk123/hash8-chatter.git",
+    category: "Web App",
+  },
+  {
+    id: 5,
+    title: "Weather Dashboard",
+    description:
+      "A weather dashboard showing current conditions, hourly and 7-day forecasts from the OpenWeather API, with interactive charts.",
+    image: "/projects/Weather_Dashboard.png",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Recharts",
+      "Leaflet",
+      "OpenWeather API",
+      "Framer Motion",
+    ],
+    liveUrl: "https://seclockweatherreportdashboard.netlify.app/",
+    githubUrl: "https://github.com/kamaleshsk123/Weather-Dashboard.git",
     category: "Web App",
   },
   {
@@ -54,43 +91,7 @@ const projects = [
     ],
     liveUrl: "https://seclockteamchat.netlify.app/",
     githubUrl: "https://github.com/kamaleshsk123/Discord-CloneApp.git",
-    category: "Web Development",
-  },
-  {
-    id: 4,
-    title: "Proto - Spec Management Tool",
-    description:
-      "An Angular tool for creating and managing Protobuf specification sheets, with a full-stack backend.",
-    image: "/projects/Protohash.png",
-    technologies: [
-      "Angular",
-      "Protobuf",
-      "Protobuf JS",
-      "Typescript",
-      "Tailwind CSS",
-      "PostgreSQL",
-    ],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/kamaleshsk123/spec-sheet-manager.git",
-    category: "Web Development",
-  },
-  {
-    id: 5,
-    title: "Weather Dashboard",
-    description: "Interactive weather dashboard with data visualization",
-    image: "/projects/Weather_Dashboard.png",
-    technologies: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Recharts",
-      "Leaflet",
-      "OpenWeather API",
-      "Framer Motion",
-    ],
-    liveUrl: "https://seclockweatherreportdashboard.netlify.app/",
-    githubUrl: "https://github.com/kamaleshsk123/Weather-Dashboard.git",
-    category: "Web Development",
+    category: "Web App",
   },
   {
     id: 6,
@@ -126,7 +127,7 @@ const Projects = () => {
             My Projects
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A collection of my recent work and personal projects
+            Selected work in design and frontend development
           </p>
         </motion.div>
 
