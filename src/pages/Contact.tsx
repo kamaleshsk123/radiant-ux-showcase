@@ -13,11 +13,35 @@ import {
   Download,
   Linkedin,
   Github,
+  Globe,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "emailjs-com";
 import { saveAs } from "file-saver";
 import { Separator } from "@/components/ui/separator";
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/shanmuga-kamalesh-m-1265b92b4",
+    icon: <Linkedin className="h-4 w-4" />,
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/kamaleshsk123",
+    icon: <Github className="h-4 w-4" />,
+  },
+  {
+    name: "Behance",
+    href: "https://www.behance.net/shanmugkamales",
+    // lucide-react has no Behance icon; use its "Bē" wordmark at icon size.
+    icon: (
+      <span aria-hidden="true" className="text-xs font-bold leading-none">
+        Bē
+      </span>
+    ),
+  },
+];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -243,40 +267,25 @@ const Contact = () => {
             </Card>
             <Card className="bg-card/50 backdrop-blur-sm border border-border/50">
               <CardContent className="p-6">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-gradient-to-r from-sky-500 to-indigo-600 p-3 rounded-full">
-                    <Linkedin className="h-6 w-6 text-white" />
+                <div className="flex items-start sm:items-center space-x-4">
+                  <div className="shrink-0 bg-gradient-to-r from-sky-500 to-indigo-600 p-3 rounded-full">
+                    <Globe className="h-6 w-6 text-white" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold">Social</h3>
-                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-muted-foreground">
-                      <a
-                        href="https://www.linkedin.com/in/shanmuga-kamalesh-m-1265b92b4"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 hover:text-primary transition-colors duration-300"
-                      >
-                        <Linkedin className="h-4 w-4" />
-                        LinkedIn
-                      </a>
-                      <a
-                        href="https://github.com/kamaleshsk123"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 hover:text-primary transition-colors duration-300"
-                      >
-                        <Github className="h-4 w-4" />
-                        GitHub
-                      </a>
-                      <a
-                        href="https://www.behance.net/shanmugkamales"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 hover:text-primary transition-colors duration-300"
-                      >
-                        <span className="text-xs font-bold leading-none">Bē</span>
-                        Behance
-                      </a>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold mb-2">Find me online</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                      {socialLinks.map(({ name, href, icon }) => (
+                        <a
+                          key={name}
+                          href={href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-border bg-background/40 px-4 text-sm font-medium text-foreground transition-colors duration-300 hover:border-primary/50 hover:bg-accent"
+                        >
+                          {icon}
+                          {name}
+                        </a>
+                      ))}
                     </div>
                   </div>
                 </div>
