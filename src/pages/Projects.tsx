@@ -7,6 +7,15 @@ import { ExternalLink, Github, X } from "lucide-react";
 
 const caseStudies = [
   {
+    title: "Penny: Personal Money App",
+    description:
+      "A money app that tells students and first-job earners in India how much is safe to spend today. 5 interviews, 20 screens, 4 usability tests, 3 screens redesigned after testing.",
+    image: "/case-studies/penny-cover.png",
+    tags: ["UX Research", "Usability Testing", "Mobile App", "Fintech"],
+    behanceUrl:
+      "https://www.behance.net/gallery/258554181/Penny-Personal-Money-App-UXUI",
+  },
+  {
     title: "Kin: Family Medicine Care App",
     description:
       "A concept app that helps families know their parent took her medicines, and act fast when she hasn't. 8 interviews, 26 screens, 5 usability tests.",
@@ -125,10 +134,103 @@ const projects = [
   },
 ];
 
+type Project = (typeof projects)[number];
+type CaseStudy = (typeof caseStudies)[number];
+
+// One overlay serves both lists; `kind` decides the badge, tags heading and buttons.
+type Selected =
+  | { kind: "project"; item: Project }
+  | { kind: "caseStudy"; item: CaseStudy };
+
+const viewport = { once: true, margin: "0px 0px -80px 0px" };
+
+type GridCardProps = {
+  title: string;
+  description: string;
+  image: string;
+  tags: readonly string[];
+  /** Small badge above the title (design case studies). */
+  label?: string;
+  /** Badge shown over the image on hover (development projects). */
+  hoverBadge?: string;
+  index: number;
+  onOpen: () => void;
+};
+
+// Shared card used by both the Design Case Studies and Development Projects grids.
+const GridCard = ({
+  title,
+  description,
+  image,
+  tags,
+  label,
+  hoverBadge,
+  index,
+  onOpen,
+}: GridCardProps) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={viewport}
+    transition={{ delay: 0.1 * (index % 3), duration: 0.8 }}
+    whileHover={{ y: -10 }}
+    className="group cursor-pointer"
+    role="button"
+    tabIndex={0}
+    aria-label={`Open details for ${title}`}
+    onClick={onOpen}
+    onKeyDown={(e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        onOpen();
+      }
+    }}
+  >
+    <Card className="h-full overflow-hidden hover:shadow-2xl transition-all duration-500 bg-card/50 backdrop-blur-sm border border-border/50">
+      <div className="relative overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {hoverBadge && (
+          <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <Badge className="mb-2">{hoverBadge}</Badge>
+          </div>
+        )}
+      </div>
+
+      <CardHeader>
+        {label && <Badge className="w-fit">{label}</Badge>}
+        <h3 className="text-xl font-semibold group-hover:text-primary transition-colors duration-300">
+          {title}
+        </h3>
+      </CardHeader>
+
+      <CardContent>
+        <p className="text-muted-foreground mb-4 line-clamp-2">{description}</p>
+
+        <div className="flex flex-wrap gap-2">
+          {tags.slice(0, 3).map((tag) => (
+            <Badge key={tag} variant="secondary" className="text-xs">
+              {tag}
+            </Badge>
+          ))}
+          {tags.length > 3 && (
+            <Badge variant="outline" className="text-xs">
+              +{tags.length - 3}
+            </Badge>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  </motion.div>
+);
+
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<
-    (typeof projects)[0] | null
-  >(null);
+  const [selected, setSelected] = useState<Selected | null>(null);
+  const close = () => setSelected(null);
 
   return (
     <section id="projects" className="relative py-16 scroll-mt-16">
@@ -136,7 +238,7 @@ const Projects = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+          viewport={viewport}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
@@ -148,141 +250,50 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px 0px -80px 0px" }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="mb-20"
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Design Case Studies
-          </h2>
-          <div className="grid lg:grid-cols-2 gap-8">
-            {caseStudies.map((study, index) => (
-              <motion.a
-                key={study.title}
-                href={study.behanceUrl}
-                target="_blank"
-                rel="noreferrer"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "0px 0px -80px 0px" }}
-                transition={{ delay: 0.1 * index, duration: 0.8 }}
-                whileHover={{ y: -10 }}
-                className="group block"
-              >
-                <Card className="h-full overflow-hidden hover:shadow-2xl transition-all duration-500 bg-card/50 backdrop-blur-sm border border-border/50">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={study.image}
-                      alt={study.title}
-                      className="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-
-                  <CardHeader className="pb-3">
-                    <Badge className="w-fit mb-3">UX/UI Case Study</Badge>
-                    <h3 className="text-2xl font-semibold group-hover:text-primary transition-colors duration-300">
-                      {study.title}
-                    </h3>
-                  </CardHeader>
-
-                  <CardContent>
-                    {study.description && (
-                      <p className="text-muted-foreground mb-4 leading-relaxed">
-                        {study.description}
-                      </p>
-                    )}
-
-                    {study.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {study.tags.map((tag) => (
-                          <Badge key={tag} variant="secondary" className="text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
-
-                    <span className="inline-flex items-center bg-gradient-to-r from-blue-500 to-purple-600 group-hover:from-blue-600 group-hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold shadow-lg group-hover:shadow-xl transition-all duration-300">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      View case study on Behance
-                    </span>
-                  </CardContent>
-                </Card>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Design Case Studies
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {caseStudies.map((study, index) => (
+            <GridCard
+              key={study.title}
+              title={study.title}
+              description={study.description}
+              image={study.image}
+              tags={study.tags}
+              label="UX/UI Case Study"
+              index={index}
+              onOpen={() => setSelected({ kind: "caseStudy", item: study })}
+            />
+          ))}
+        </div>
 
         <h2 className="text-3xl font-bold text-center mb-12">
           Development Projects
         </h2>
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <GridCard
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px -80px 0px" }}
-              transition={{ delay: 0.1 * (index % 3), duration: 0.8 }}
-              whileHover={{ y: -10 }}
-              className="group cursor-pointer"
-              onClick={() => setSelectedProject(project)}
-            >
-              <Card className="h-full overflow-hidden hover:shadow-2xl transition-all duration-500 bg-card/50 backdrop-blur-sm border border-border/50">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Badge className="mb-2">{project.category}</Badge>
-                  </div>
-                </div>
-
-                <CardHeader>
-                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                </CardHeader>
-
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <Badge variant="outline" className="text-xs">
-                        +{project.technologies.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+              title={project.title}
+              description={project.description}
+              image={project.image}
+              tags={project.technologies}
+              hoverBadge={project.category}
+              index={index}
+              onOpen={() => setSelected({ kind: "project", item: project })}
+            />
           ))}
         </div>
 
         <AnimatePresence>
-          {selectedProject && (
+          {selected && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-              onClick={() => setSelectedProject(null)}
+              onClick={close}
             >
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -294,15 +305,15 @@ const Projects = () => {
                 <div className="flex justify-between items-start mb-6">
                   <div>
                     <h2 className="text-3xl font-bold mb-2">
-                      {selectedProject.title}
+                      {selected.item.title}
                     </h2>
-                    <Badge className="mb-4">{selectedProject.category}</Badge>
+                    <Badge className="mb-4">
+                      {selected.kind === "project"
+                        ? selected.item.category
+                        : "UX/UI Case Study"}
+                    </Badge>
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setSelectedProject(null)}
-                  >
+                  <Button variant="ghost" size="icon" onClick={close}>
                     <X className="h-4 w-4" />
                   </Button>
                 </div>
@@ -310,64 +321,85 @@ const Projects = () => {
                 <div className="grid lg:grid-cols-2 gap-6">
                   <div>
                     <img
-                      src={selectedProject.image}
-                      alt={selectedProject.title}
+                      src={selected.item.image}
+                      alt={selected.item.title}
                       className="w-full h-64 object-cover rounded-lg mb-4"
                     />
                   </div>
 
                   <div>
                     <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {selectedProject.description}
+                      {selected.item.description}
                     </p>
 
                     <div className="mb-6">
-                      <h3 className="font-semibold mb-3">Technologies Used:</h3>
+                      <h3 className="font-semibold mb-3">
+                        {selected.kind === "project"
+                          ? "Technologies Used:"
+                          : "Focus Areas:"}
+                      </h3>
                       <div className="flex flex-wrap gap-2">
-                        {selectedProject.technologies.map((tech) => (
-                          <Badge key={tech} variant="secondary">
-                            {tech}
+                        {(selected.kind === "project"
+                          ? selected.item.technologies
+                          : selected.item.tags
+                        ).map((tag) => (
+                          <Badge key={tag} variant="secondary">
+                            {tag}
                           </Badge>
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex gap-4">
+                    {selected.kind === "caseStudy" ? (
                       <Button
                         asChild
-                        className={`flex-1 ${
-                          selectedProject.id === 4
-                            ? "bg-gray-400 hover:bg-gray-400"
-                            : ""
-                        }`}
-                        disabled={selectedProject.id === 4}
+                        className="w-full text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                       >
                         <a
-                          href={
-                            selectedProject.id === 4
-                              ? undefined
-                              : selectedProject.liveUrl
-                          }
-                          target={
-                            selectedProject.id === 4 ? undefined : "_blank"
-                          }
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Live Demo
-                        </a>
-                      </Button>
-                      <Button variant="outline" asChild className="flex-1">
-                        <a
-                          href={selectedProject.githubUrl}
+                          href={selected.item.behanceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <Github className="mr-2 h-4 w-4" />
-                          Source Code
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          View case study on Behance
                         </a>
                       </Button>
-                    </div>
+                    ) : (
+                      <div className="flex gap-4">
+                        <Button
+                          asChild
+                          className={`flex-1 ${
+                            selected.item.id === 4
+                              ? "bg-gray-400 hover:bg-gray-400"
+                              : ""
+                          }`}
+                          disabled={selected.item.id === 4}
+                        >
+                          <a
+                            href={
+                              selected.item.id === 4
+                                ? undefined
+                                : selected.item.liveUrl
+                            }
+                            target={selected.item.id === 4 ? undefined : "_blank"}
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            Live Demo
+                          </a>
+                        </Button>
+                        <Button variant="outline" asChild className="flex-1">
+                          <a
+                            href={selected.item.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Github className="mr-2 h-4 w-4" />
+                            Source Code
+                          </a>
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
